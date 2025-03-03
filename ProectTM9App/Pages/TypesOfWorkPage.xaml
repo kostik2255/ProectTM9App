@@ -1,0 +1,78 @@
+﻿<Page x:Class="ProectTM9App.Pages.TypesOfWorkPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ProectTM9App.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="TypesOfWorkPage">
+
+    <Grid Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="390"/>
+            <ColumnDefinition Width="390"/>
+        </Grid.ColumnDefinitions>
+
+        <TextBlock Grid.Row="0" Grid.ColumnSpan="2" Text="ВИДЫ РАБОТ" FontSize="20" HorizontalAlignment="Left" Foreground="#FF565656" FontWeight="Bold" Margin="329,0,0,0" Width="132"/>
+
+        <StackPanel Grid.Column="0" Margin="0,70,0,0">
+            <TextBlock Text="РАЗРАБОТКА ГРАДОСТРОИТЕЛЬНОЙ ДОКУМЕНТАЦИИ" Margin="60,5,0,0" TextWrapping="Wrap" FontSize="12" FontWeight="Bold">
+                <Image Source="/Images/galka.png" Height="15" Width="20" Margin="0,0,5,0"/>
+            </TextBlock>
+            <TextBlock Text="ПРОЕКТИРОВАНИЕ РЕКОНСТРУКЦИЙ ЗДАНИЙ" Margin="60,5,0,0" TextWrapping="Wrap" FontSize="12" FontWeight="Bold">
+                <Image Source="/Images/galka.png" Height="15" Width="20" Margin="0,0,5,0"/>
+            </TextBlock>
+            <TextBlock Text="ОБСЛЕДОВАНИЕ ЗДАНИЙ И СООРУЖЕНИЙ" Margin="60,5,0,0" TextWrapping="Wrap" FontSize="12" FontWeight="Bold">
+                <Image Source="/Images/galka.png" Height="15" Width="20" Margin="0,0,5,0"/>
+            </TextBlock>
+        </StackPanel>
+
+
+        <StackPanel Grid.Column="1" Margin="0,70,0,0">
+            <TextBlock Text="ПРОЕКТИРОВАНИЕ ЗДАНИЙ И СООРУЖЕНИЙ" Margin="60,5,0,0" TextWrapping="Wrap" FontSize="12" FontWeight="Bold">
+                <Image Source="/Images/galka.png" Height="15" Width="20" Margin="0,0,5,0"/>
+            </TextBlock>
+            <TextBlock Text="АВТОРСКИЙ НАДЗОР" Margin="60,5,0,0" FontSize="12" TextWrapping="Wrap" FontWeight="Bold">
+                <Image Source="/Images/galka.png" Height="15" Width="20" Margin="0,0,5,0"/>
+            </TextBlock>
+            <TextBlock Text="ПОМОЩЬ В ПРОХОЖДЕНИИ ЭКСПЕРТИЗЫ" Margin="60,5,0,0" TextWrapping="Wrap" FontSize="12" FontWeight="Bold">
+                <Image Source="/Images/galka.png" Height="15" Width="20" Margin="0,0,5,0"/>
+            </TextBlock>
+        </StackPanel>
+
+
+        <StackPanel Grid.Column="0" Margin="0,200,0,0">
+            <TextBlock Text="КАТЕГОРИИ ОБЪЕКТОВ ПРОЕКТИРОВАНИЯ" Margin="30,5,0,0" FontSize="12"/>
+
+            <TextBlock Text="Общественные и административные здания" Margin="30,5,0,0" FontSize="12" Foreground="#FF766666"/>
+            <TextBlock Text="Торговые и развлекательные центры" Margin="30,0,0,0" FontSize="12" Foreground="#FF766666"/>
+            <TextBlock Text="Жилые многоквартирные, частные дома, коттеджные поселки" Margin="30,0,0,0" FontSize="12" Foreground="#FF766666"/>
+            <TextBlock Text="Образовательные и дошкольные учреждения" Margin="30,0,0,0" FontSize="12" Foreground="#FF766666"/>
+            <TextBlock Text="Производственные и промышленные сооружения" Margin="30,0,0,0" FontSize="12" Foreground="#FF766666"/>
+            <TextBlock Text="Медицинские учреждения, оздоровительные комплексы" Margin="30,0,0,0" FontSize="12" Foreground="#FF766666"/>
+            <TextBlock Text="Благоустройство городской среды" Margin="30,0,0,0" FontSize="12" Foreground="#FF766666"/>
+            <TextBlock Text="Инженерные сооружения (КНС, ВЗУ, котельные)" Margin="30,0,0,0" FontSize="12" Foreground="#FF766666"/>
+            <TextBlock Text="Сельскохозяйственные здания и сооружения" Margin="30,0,0,0" FontSize="12" Foreground="#FF766666"/>
+        </StackPanel>
+
+
+        <StackPanel Grid.Column="1" Margin="0,200,0,0">
+            <TextBlock Text="ПОЛНЫЙ ОБЪЕМ ПРОЕКТНОЙ ДОКУМЕНТАЦИИ" Margin="30,5,0,0" FontSize="12"/>
+
+            <TextBlock Text="Схема планировочной организации земельного участка (ГП)" Margin="30,5,0,0" FontSize="12" Foreground="#FF766666"/>
+            <TextBlock Text="Архитектурные решения" Margin="30,0,0,0" FontSize="12" Foreground="#FF766666"/>
+            <TextBlock Text="Конструктивные и объемно-планировочные решения" Margin="30,0,0,0" FontSize="12" Foreground="#FF766666"/>
+            <TextBlock Text="Инженерные системы и инженерные сети" Margin="30,0,0,0" FontSize="12" Foreground="#FF766666"/>
+            <TextBlock Text="Технологические решения" Margin="30,0,0,0" FontSize="12" Foreground="#FF766666"/>
+            <TextBlock Text="Проект организации строительства" Margin="30,0,0,0" FontSize="12" Foreground="#FF766666"/>
+            <TextBlock Text="Сметная документация" Margin="30,0,0,0" FontSize="12" Foreground="#FF766666"/>
+            <TextBlock Text="Проект организации работ по сносу и демонтажу зданий" Margin="30,0,0,0" FontSize="12" Foreground="#FF766666"/>
+            <TextBlock Text="Мероприятия по обеспечению доступа инвалидов" Margin="30,0,0,0" FontSize="12" Foreground="#FF766666"/>
+        </StackPanel>
+    </Grid>
+</Page>

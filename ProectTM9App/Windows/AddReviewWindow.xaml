@@ -1,0 +1,26 @@
+﻿<Window x:Class="ProectTM9App.Windows.AddReviewWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ProectTM9App.Windows"
+        mc:Ignorable="d" Closing="Window_Closing"
+        Title="AddReviewWindow" Height="450" Width="800">
+    <Grid Background="Gray">
+        <StackPanel Margin="10">
+            <TextBlock Text="ФИО:" Foreground="White"/>
+            <TextBox x:Name="NameTextBox" Margin="0,0,0,10"/>
+
+            <TextBlock Text="Компания:" Foreground="White"/>
+            <TextBox x:Name="CompanyTextBox" Margin="0,0,0,10"/>
+            
+            <TextBlock Text="Должность:" Foreground="White"/>
+            <TextBox x:Name="PositionTextBox" Margin="0,0,0,10"/>
+
+            <TextBlock Text="Отзыв:" Foreground="White"/>
+            <TextBox x:Name="ReviewTextBox" Margin="0,0,0,10" AcceptsReturn="True" Height="100"/>
+
+            <Button Content="Добавить" x:Name="AddReviewBtn" Click="AddReviewBtn_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>

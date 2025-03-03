@@ -1,0 +1,77 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Icons\about.png" />
+    <None Remove="Icons\bag.png" />
+    <None Remove="Icons\calculator.png" />
+    <None Remove="Icons\clock.png" />
+    <None Remove="Icons\contact.png" />
+    <None Remove="Icons\ctroiteli.png" />
+    <None Remove="Icons\hands.png" />
+    <None Remove="Icons\home.png" />
+    <None Remove="Icons\otzivi.png" />
+    <None Remove="Icons\team.png" />
+    <None Remove="Icons\typeswork.png" />
+    <None Remove="Images\anonim.png" />
+    <None Remove="Images\clients.png" />
+    <None Remove="Images\email.png" />
+    <None Remove="Images\galka.png" />
+    <None Remove="Images\location.png" />
+    <None Remove="Images\telephon.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="System.Net.Http" Version="4.3.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ProectTM9Api\ProectTM9Api.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Icons\about.png" />
+    <Resource Include="Icons\bag.png" />
+    <Resource Include="Icons\calculator.png" />
+    <Resource Include="Icons\clock.png" />
+    <Resource Include="Icons\contact.png" />
+    <Resource Include="Icons\ctroiteli.png" />
+    <Resource Include="Icons\hands.png" />
+    <Resource Include="Icons\home.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Icons\otzivi.png" />
+    <Resource Include="Icons\team.png" />
+    <Resource Include="Icons\typeswork.png" />
+    <Resource Include="Images\anonim.png" />
+    <Resource Include="Images\clients.png" />
+    <Resource Include="Images\email.png" />
+    <Resource Include="Images\galka.png" />
+    <Resource Include="Images\location.png" />
+    <Resource Include="Images\telephon.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="reviews.json">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="Pages\FeedbackPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="Pages\MainPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+
+</Project>

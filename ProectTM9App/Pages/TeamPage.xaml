@@ -1,0 +1,74 @@
+﻿<Page x:Class="ProectTM9App.Pages.TeamPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ProectTM9App.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="TeamPage">
+
+    <Grid Background="#FFE8E8E8">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="330"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.ColumnSpan="4" Text="КОМАНДА" HorizontalAlignment="Center" FontWeight="Bold" FontSize="23"/>
+
+        <!--Смиршина Татьяна-->
+        <Grid Grid.Column="0" Grid.Row="1" Margin="10" MouseEnter="ShowHiddenGrid" MouseLeave="HideHiddenGrid">
+            <Image Source="/Images/anonim.png" Margin="0,0,0,50" />
+            <TextBlock Text="СМИРШИНА ТАТЬЯНА" FontWeight="Bold" FontSize="15" Foreground="#FF5E5E5E"/>
+            <TextBlock Text="Руководитель проектной мастерской" TextWrapping="Wrap" Margin="0,215,0,-15" HorizontalAlignment="Center" Foreground="#FF5E5E5E"/>
+
+            <!--hiddenGrid-->
+            <Grid x:Name="hiddenGrid" Visibility="Collapsed" Background="#FF686868">
+                <TextBlock Margin="5,15,5,0" TextWrapping="Wrap" Text="Образование высшее, специальность ПГС, окончила Горьковский инженерно-строительный институт им. Чкалова в 1977 г. Являюсь руководителем проектной организацией с 1986 г. Обладаю высокой работоспособностью, всячески поддерживаю работу компании в сложные моменты, имею большие навыки делового общения. Почётный строитель России." FontSize="12" Foreground="White"/>
+            </Grid>
+        </Grid>
+
+        <!--Бувалина Ирина-->
+        <Grid Grid.Column="1" Grid.Row="1" Margin="10" MouseEnter="ShowHiddenGrid1" MouseLeave="HideHiddenGrid1">
+            <Image Source="/Images/anonim.png" Margin="0,0,0,50"/>
+            <TextBlock Text="БУВАЛИНА ИРИНА" FontWeight="Bold" Margin="10,0,0,0" Foreground="#FF5E5E5E" FontSize="15"/>
+            <TextBlock Text="Заместитель руководителя / ГИП" TextWrapping="Wrap" Margin="0,215,0,10" HorizontalAlignment="Left" Foreground="#FF5E5E5E"/>
+
+            <!--hiddenGrid1-->
+            <Grid x:Name="hiddenGrid1" Visibility="Collapsed" Background="#FF686868">
+                <TextBlock Margin="5,15,5,0" TextWrapping="Wrap" Text="Образование высшее, специальность ПГС, окончила Горьковский инженерно-строительный институт им. Чкалова в 1978 г. Профессии не изменяла, стаж работы более 35 лет, Трудолюбива коммуникабельна, инициативна, способна взять на себя ответственность в принятии решений по сложным вопросам, находящиеся в её компетенции. Почетный строитель России." FontSize="12" Foreground="White"/>
+            </Grid>
+        </Grid>
+
+        <!--Маркин Александр-->
+        <Grid Grid.Column="2" Grid.Row="1" Margin="10" MouseEnter="ShowHiddenGrid2" MouseLeave="HideHiddenGrid2">
+            <Image Source="/Images/anonim.png" Margin="0,0,0,50"/>
+            <TextBlock Text="МАРКИН АЛЕКСАНДР" FontWeight="Bold" Foreground="#FF5E5E5E" FontSize="15"/>
+            <TextBlock Text="ГАП" TextWrapping="Wrap" Margin="0,225,0,16" HorizontalAlignment="Center" Foreground="#FF5E5E5E"/>
+
+            <!--hiddenGrid2-->
+            <Grid x:Name="hiddenGrid2" Visibility="Collapsed" Background="#FF686868">
+                <TextBlock Margin="5,15,5,0" TextWrapping="Wrap" Text="Образование высшее, специальность архитектор, окончил Московский институт инженеров землеустройства в 1983 г. Владеет высокими знаниями по своей специальности. Зарекомендовал себя инициативным, ответственным и надежным специалистом. Принимает активное участие в общественной жизни коллектива." FontSize="12" Foreground="White"/>
+            </Grid>
+        </Grid>
+
+        <!--Митькина Елена-->
+        <Grid Grid.Column="3" Grid.Row="1" Margin="10" MouseEnter="ShowHiddenGrid3" MouseLeave="HideHiddenGrid3">
+            <Image Source="/Images/anonim.png" Margin="0,0,0,50"/>
+            <TextBlock Text="МИТЬКИНА ЕЛЕНА" Margin="10,0,0,0" FontWeight="Bold" Foreground="#FF5E5E5E" FontSize="15"/>
+            <TextBlock Text="ГИП" TextWrapping="Wrap" Margin="0,225,0,25" HorizontalAlignment="Center" Foreground="#FF5E5E5E"/>
+
+            <!--hiddenGrid3-->
+            <Grid x:Name="hiddenGrid3" Visibility="Collapsed" Background="#FF686868">
+                <TextBlock Margin="5,15,5,0" TextWrapping="Wrap" Text="Образование высшее, специальность промышленная теплоэнергетика, окончила Новомосковский филиал МХТИ им. Д. И. Менделеева в 1987 г. Отличается высоким профессионализмом, пунктуальностью и ответственностью. С коллегами и подчинёнными находиться в доброжелательных отношениях, всегда проявляет сдержанность, терпение и деликатность." FontSize="12" Foreground="White"/>
+            </Grid>
+        </Grid>
+    </Grid>
+</Page>

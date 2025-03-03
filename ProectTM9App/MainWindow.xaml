@@ -1,0 +1,62 @@
+﻿<Window x:Class="ProectTM9App.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ProectTM9App"
+        mc:Ignorable="d"
+        Title="MainWindow" MinHeight="600" MinWidth="1200">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="2*"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- Навигационная панель -->
+        <StackPanel Grid.Column="0" Background="#FF989898">
+            <Button Style="{StaticResource NavButtonStyle}" Click="MainPageBtn_Click">
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="/Icons/home.png" Width="20" Height="20" Margin="0,0,5,0"/>
+                    <TextBlock Text="Главная"/>
+                </StackPanel>
+            </Button>
+            <Button Style="{StaticResource NavButtonStyle}" Click="TypesOfWorkBtn_Click">
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="/Icons/typeswork.png" Width="20" Height="20" Margin="0,0,5,0"/>
+                    <TextBlock Text="Виды работ"/>
+                </StackPanel>
+            </Button>
+            <Button Style="{StaticResource NavButtonStyle}" Click="AboutBtn_Click">
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="/Icons/about.png" Width="25" Height="25" Margin="0,0,5,0"/>
+                    <TextBlock Text="О нас"/>
+                </StackPanel>
+            </Button>
+            <Button Style="{StaticResource NavButtonStyle}" Click="TeamBtn_Click">
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="/Icons/team.png" Width="20" Height="20" Margin="0,0,5,0"/>
+                    <TextBlock Text="Команда"/>
+                </StackPanel>
+            </Button>
+            <Button Style="{StaticResource NavButtonStyle}" Click="FeedbackBtn_Click">
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="/Icons/otzivi.png" Width="20" Height="20" Margin="0,0,5,0"/>
+                    <TextBlock Text="Отзывы"/>
+                </StackPanel>
+            </Button>
+            <Button Style="{StaticResource NavButtonStyle}" Click="ContactBtn_Click">
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="/Icons/contact.png" Width="20" Height="20" Margin="0,0,5,0"/>
+                    <TextBlock Text="Контакты"/>
+                </StackPanel>
+            </Button>
+
+            <Label x:Name="labelDateTime" FontSize="14" Height="40" Foreground="White" FontWeight="Bold"/>
+        </StackPanel>
+
+
+
+        <Frame x:Name="MainFrame" Grid.Column="1" NavigationUIVisibility="Hidden"/>
+
+    </Grid>
+</Window>

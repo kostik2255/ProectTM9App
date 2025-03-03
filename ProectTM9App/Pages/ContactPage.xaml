@@ -1,0 +1,32 @@
+﻿<Page x:Class="ProectTM9App.Pages.ContactPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ProectTM9App.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="ContactPage">
+
+    <Grid Background="Black">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Первая строка с картой Яндекс -->
+        <!--<WebBrowser x:Name="YandexMap" Grid.Row="0" Source="https://yandex.ru/maps/?ll=38.972107%2C55.167332&z=12&mode=search" />-->
+
+        <!-- Вторая строка с изображениями и текстом -->
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1">
+            <Image Source="/Images/location.png" Width="24" Height="24" Margin="10,0,0,10"/>
+            <TextBlock x:Name="LocationTB" Text="142805 Московская обл., г. Ступино, Приокский пер., 7" MouseLeftButtonUp="LocationTB_MouseLeftButtonUp" FontSize="13" Foreground="White" Margin="5"/>
+
+            <Image Source="/Images/email.png" Width="24" Height="24" Margin="10,0,0,10"/>
+            <TextBlock x:Name="EmailTB" Text="info@proekt-tm9.ru" MouseLeftButtonUp="EmailTB_MouseLeftButtonUp" FontSize="13" Foreground="White" Margin="5"/>
+
+            <Image Source="/Images/telephon.png" Width="24" Height="24" Margin="10,0,0,10"/>
+            <TextBlock x:Name="PhoneTB" Text="+7 (496) 641-57-70" MouseLeftButtonUp="PhoneTB_MouseLeftButtonUp" FontSize="13" Foreground="White" Margin="5"/>
+        </StackPanel>
+    </Grid>
+</Page>
