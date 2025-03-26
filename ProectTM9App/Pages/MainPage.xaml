@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:ProectTM9App.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="500" d:DesignWidth="1000"
-      Title="MainPage">
+      Title="Главная">
 
     <Grid Background="#FF727272">
         <Grid.RowDefinitions>
@@ -36,7 +36,7 @@
                         <ComboBoxItem Content="Другая страна" />
                     </ComboBox>
                 </StackPanel>
-                
+
             </StackPanel>
             
             <Button x:Name="GetConsultationBtn" Click="GetConsultationBtn_Click" Width="400" Content="ПОЛУЧИТЬ КОНСУЛЬТАЦИЮ ИНЖЕНЕРА" Background="#FFFA663D" Foreground="White" FontSize="16"/>

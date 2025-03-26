@@ -54,8 +54,6 @@
             <Label x:Name="labelDateTime" FontSize="14" Height="40" Foreground="White" FontWeight="Bold"/>
         </StackPanel>
 
-
-
         <Frame x:Name="MainFrame" Grid.Column="1" NavigationUIVisibility="Hidden"/>
 
     </Grid>

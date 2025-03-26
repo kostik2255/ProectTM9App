@@ -36,7 +36,7 @@ namespace ProectTM9App.Pages
 
         private void LeaveReviewBtn_Click(object sender, RoutedEventArgs e)
         {
-            var addReviewWindow = new AddReviewWindow(_viewModel);
+            var addReviewWindow = new AddReviewWindow();
             addReviewWindow.ShowDialog();
         }
 

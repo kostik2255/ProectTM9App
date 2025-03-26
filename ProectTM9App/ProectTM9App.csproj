@@ -25,6 +25,7 @@
     <None Remove="Images\email.png" />
     <None Remove="Images\galka.png" />
     <None Remove="Images\location.png" />
+    <None Remove="Images\map.png" />
     <None Remove="Images\telephon.png" />
   </ItemGroup>
 
@@ -56,13 +57,8 @@
     <Resource Include="Images\email.png" />
     <Resource Include="Images\galka.png" />
     <Resource Include="Images\location.png" />
+    <Resource Include="Images\map.png" />
     <Resource Include="Images\telephon.png" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Update="reviews.json">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </None>
   </ItemGroup>
 
   <ItemGroup>

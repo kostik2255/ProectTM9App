@@ -14,10 +14,10 @@
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
 
-        <!-- Первая строка с картой Яндекс -->
-        <!--<WebBrowser x:Name="YandexMap" Grid.Row="0" Source="https://yandex.ru/maps/?ll=38.972107%2C55.167332&z=12&mode=search" />-->
+        <StackPanel Margin="10">
+            <Image Source="/Images/map.png" />
+        </StackPanel>
 
-        <!-- Вторая строка с изображениями и текстом -->
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1">
             <Image Source="/Images/location.png" Width="24" Height="24" Margin="10,0,0,10"/>
             <TextBlock x:Name="LocationTB" Text="142805 Московская обл., г. Ступино, Приокский пер., 7" MouseLeftButtonUp="LocationTB_MouseLeftButtonUp" FontSize="13" Foreground="White" Margin="5"/>

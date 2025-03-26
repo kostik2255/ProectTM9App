@@ -41,16 +41,14 @@ namespace ProectTM9App.Pages
                 MessageBox.Show("Введите корректное имя.");
                 return;
             }
-
             if (!IsValidEmail(email))
             {
                 MessageBox.Show("Введите корректный Email.");
                 return;
             }
-
             if (!IsValidPhoneNumber(phoneNumber))
             {
-                MessageBox.Show("Введите корректный номер телефона.");
+                MessageBox.Show("Номер телефона должен начинаться на '+'.");
                 return;
             }
 
@@ -65,18 +63,34 @@ namespace ProectTM9App.Pages
             {
                 var json = JsonSerializer.Serialize(request);
                 var content = new StringContent(json, Encoding.UTF8, "application/json");
-                var response = await httpClient.PostAsync("https://localhost:7157/api/Consultation", content);
 
-                if (response.IsSuccessStatusCode)
+                try
                 {
-                    MessageBox.Show("Запрос успешно отправлен.");
+                    var response = await httpClient.PostAsync("https://localhost:7157/api/Consultation", content);
+                    if (response.IsSuccessStatusCode)
+                    {
+                        MessageBox.Show("Запрос успешно отправлен.");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Ошибка при отправке запроса. Код статуса: " + response.StatusCode);
+                    }
                 }
-                else
+                catch (HttpRequestException ex)
                 {
-                    MessageBox.Show("Ошибка при отправке запроса.");
+                    MessageBox.Show("Ошибка сети: " + ex.Message);
+                }
+                catch (TaskCanceledException)
+                {
+                    MessageBox.Show("Запрос превысил время ожидания.");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Произошла ошибка: " + ex.Message);
                 }
             }
         }
+
         private bool IsValidName(string name)
         {
             return !string.IsNullOrWhiteSpace(name) && name != "Ваше имя";
@@ -89,24 +103,27 @@ namespace ProectTM9App.Pages
 
         private bool IsValidPhoneNumber(string phoneNumber)
         {
-            // Проверка на наличие символа "+" в начале и на наличие "7" сразу после
-            if (phoneNumber.StartsWith("+7") && phoneNumber.Length == 12)
+            // Проверяем, что номер начинается с "+" и длина номера больше 1
+            if (phoneNumber.StartsWith('+') && phoneNumber.Length > 1)
             {
-                // Проверяем, что после "+7" идут только цифры
-                return phoneNumber.Substring(2).All(char.IsDigit);
+                // Проверяем, что после "+" идут только цифры
+                return phoneNumber.Substring(1).All(char.IsDigit);
             }
-            
+
             return false;
         }
 
-
-
         private void countryComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            // Проверяем, что выбранный элемент не равен null
             if (countryComboBox.SelectedItem == null)
             {
-                return; // Выходим из метода, если выбранный элемент равен null
+                // Если ничего не выбрано, устанавливается минимум 6 символов
+                textBoxNumber.MaxLength = 15; // Максимум 15 символов для международных номеров
+                if (textBoxNumber.Text.Length < 6)
+                {
+                    MessageBox.Show("Номер должен содержать минимум 6 символов.");
+                }
+                return; // Выход из метода, если выбранный элемент равен null
             }
 
             if (countryComboBox.SelectedItem is ComboBoxItem selectedItem)
@@ -116,23 +133,28 @@ namespace ProectTM9App.Pages
                     // Устанавливаем начальное значение для России
                     if (!textBoxNumber.Text.StartsWith("+7"))
                     {
-                        textBoxNumber.Text = "+7"; // Устанавливаем "+7", если это не так
+                        textBoxNumber.Text = "+7";
                     }
 
-                    // Проверяем, что введено ровно 10 цифр после "+7"
-                    var numberPart = textBoxNumber.Text.Substring(2);
-                    if (!Regex.IsMatch(numberPart, @"^d{0,10}$")) // Исправлено: добавлены символы для обозначения цифр
+                    textBoxNumber.MaxLength = 12; // Минимум 12 символов (включая +7)
+
+                    // Проверка длины номера
+                    if (textBoxNumber.Text.Length < 12)
                     {
-                        // Если введено больше 10 цифр, обрезаем до 10
-                        textBoxNumber.Text = "+7" + numberPart.Substring(0, Math.Min(numberPart.Length, 10));
+                        MessageBox.Show("Российский номер должен содержать минимум 12 символов (включая +7).");
                     }
-                    textBoxNumber.MaxLength = 12; // Максимум 12 символов (включая +7)
                 }
                 else if (selectedItem.Content.ToString() == "Другая страна")
                 {
                     // Очищаем текстовое поле для другой страны
-                    textBoxNumber.Text = "";
-                    textBoxNumber.MaxLength = 13; // Максимум 13 символов
+                    textBoxNumber.Text = "+";
+                    textBoxNumber.MaxLength = 15; // Максимум 15 символов для международных номеров
+
+                    // Проверка длины номера
+                    if (textBoxNumber.Text.Length < 6)
+                    {
+                        MessageBox.Show("Номер из другой страны должен содержать минимум 6 символов.");
+                    }
                 }
             }
         }
