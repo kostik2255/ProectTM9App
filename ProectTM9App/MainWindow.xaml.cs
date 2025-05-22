@@ -63,11 +63,6 @@ namespace ProectTM9App
             MainFrame.Navigate(new TeamPage());
         }
 
-        private void FeedbackBtn_Click(object sender, RoutedEventArgs e)
-        {
-            MainFrame.Navigate(new FeedbackPage());
-        }
-
         private void ContactBtn_Click(object sender, RoutedEventArgs e)
         {
             MainFrame.Navigate(new ContactPage());

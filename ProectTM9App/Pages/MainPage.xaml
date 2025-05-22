@@ -10,40 +10,61 @@
 
     <Grid Background="#FF727272">
         <Grid.RowDefinitions>
-            <RowDefinition Height="100*"/>
-            <RowDefinition Height="141"/>
-            <RowDefinition Height="209*"/>
+            <RowDefinition Height="60*"/>
+            <RowDefinition Height="210"/>
+            <RowDefinition Height="210*"/>
         </Grid.RowDefinitions>
 
-        <!--StackPanel позволяет выводить вложенные элементы по порядку-->
-        <StackPanel Margin="10,10,10,6">
+        <StackPanel Margin="10,10,10,0">
             <Label HorizontalAlignment="Center" Content="КОМПЛЕКСНОЕ ПРОЕКТИРОВАНИЕ ВСЕХ ТИПОВ ЗДАНИЙ" Foreground="White" FontSize="14" FontWeight="Bold"/>
             <Label HorizontalAlignment="Center" Content="И СООРУЖЕНИЙ ПО МОСКВЕ И МО" Foreground="White" FontSize="14" FontWeight="Bold"/>
-            <Label HorizontalAlignment="Center" Content="С ВЫГОДОЙ 15%" Foreground="White" FontSize="14" FontWeight="Bold"/>
         </StackPanel>
 
-        <StackPanel VerticalAlignment="Center" Grid.Row="1" Height="138">
+        <StackPanel Grid.Row="1">
             <Label HorizontalAlignment="Center" Content="Узнайте, как гарантированно получить разрешение на строительство с первого раза" Foreground="White"/>
 
-            <StackPanel Orientation="Horizontal" Margin="20" HorizontalAlignment="Center">
-                <TextBox x:Name="textBoxName" Text="Ваше имя" Width="200" Margin="10" FontSize="16" />
-                <TextBox x:Name="textBoxEmail" Text="Ваш Email" Margin="10" Width="200" FontSize="16" />
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="20,0,20,0">
+                <TextBox x:Name="textBoxName" MaxLength="120" Text="Ваше имя*" Width="200" Height="30" Margin="0" FontSize="16" />
+                <TextBox x:Name="textBoxEmail" MaxLength="100" Text="Ваш Email*" Margin="5" Width="200" Height="30" FontSize="16" />
 
-                <StackPanel Margin="10" Orientation="Horizontal">
-                    <TextBox x:Name="textBoxNumber" Text="Ваш телефон" MaxLength="13" Width="200" FontSize="16"/>
-                    <ComboBox x:Name="countryComboBox"  SelectionChanged="countryComboBox_SelectionChanged" Width="100">
-                        <ComboBoxItem Content="Россия" />
-                        <ComboBoxItem Content="Другая страна" />
+                <StackPanel Orientation="Horizontal" Width="310">
+                    <TextBox x:Name="textBoxNumber" Text="Ваш телефон*" MaxLength="13" Width="200" Height="30" Margin="5,0,0,0" FontSize="16"/>
+
+                    <StackPanel Orientation="Vertical" Margin="0,0,0,15">
+                        <TextBlock Text="Выберите страну:" Foreground="White" HorizontalAlignment="Center" Margin="0,0,5,5"/>
+                        <ComboBox x:Name="countryComboBox" Margin="0,0,0,6" Height="30" SelectionChanged="countryComboBox_SelectionChanged" Width="100">
+                            <ComboBoxItem Content="Россия" />
+                            <ComboBoxItem Content="Другая страна" />
+                        </ComboBox>
+                    </StackPanel>
+                </StackPanel>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,0,0,5" Width="720">
+                <TextBox x:Name="textBoxQuestion" MaxLength="500" Text="Напишите ваш вопрос или выберите из выпадающего списка" Height="30" Width="500"/>
+
+                <StackPanel Orientation="Vertical">
+                    <TextBlock Text="Выберите тип обращения:" Foreground="White" HorizontalAlignment="Center" Margin="0,0,0,5"/>
+                    <ComboBox x:Name="readyComboBox" Width="215" Height="30" Margin="0,0,0,21" SelectionChanged="readyComboBox_SelectionChanged">
+                        <ComboBoxItem Content="Вопрос к инженеру-конструктору"/>
+                        <ComboBoxItem Content="Запрос на встречу в офисе"/>
+                        <ComboBoxItem Content="Запрос на звонок для уточнения деталей"/>
+                        <ComboBoxItem Content="Запрос на сметную документацию"/>
+                        <ComboBoxItem Content="Консультация с архитектором"/>
+                        <ComboBoxItem Content="Консультация по водоснабжению и канализации"/>
+                        <ComboBoxItem Content="Консультация по проектированию систем отопления и вентиляции"/>
+                        <ComboBoxItem Content="Напишите мне по электронной почте (укажите почту)"/>
+                        <ComboBoxItem Content="Обсуждение проекта с менеджером"/>
+                        <ComboBoxItem Content="Сообщите мне через мессенджер (укажите контакт и мессенджер)"/>
                     </ComboBox>
                 </StackPanel>
-
             </StackPanel>
-            
+
             <Button x:Name="GetConsultationBtn" Click="GetConsultationBtn_Click" Width="400" Content="ПОЛУЧИТЬ КОНСУЛЬТАЦИЮ ИНЖЕНЕРА" Background="#FFFA663D" Foreground="White" FontSize="16"/>
         </StackPanel>
 
 
-        <StackPanel Grid.Row="2" Margin="0,15,0,0">
+        <StackPanel Grid.Row="2" Margin="0,15,0,5">
             <StackPanel HorizontalAlignment="Center">
                 <TextBlock Text="5 ПРИЧИН ПОЧЕМУ ЗАКАЗЫВАЮТ У НАС" Foreground="White" FontSize="16" FontWeight="Bold"/>
             </StackPanel>
@@ -55,7 +76,7 @@
                         <Image Source="/Icons/ctroiteli.png" Width="100" Height="100" Margin="5" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                     </Grid>
 
-                    <TextBlock Text="Почетные строители РФ" HorizontalAlignment="Center" Foreground="White" Margin="5" FontSize="14"/>
+                    <TextBlock Text="Почетные строители РФ" HorizontalAlignment="Center" TextWrapping="Wrap" Foreground="White" Margin="5" FontSize="14"/>
                 </StackPanel>
 
                 <StackPanel>
@@ -64,18 +85,18 @@
                         <Image Source="/Icons/calculator.png" Width="90" Height="90" Margin="5"/>
                     </Grid>
 
-                    <TextBlock Text="Прозрачные цены" HorizontalAlignment="Center" Foreground="White" Margin="5" FontSize="14"/>
+                    <TextBlock Text="Прозрачные цены" TextWrapping="Wrap" HorizontalAlignment="Center" Foreground="White" Margin="5" FontSize="14"/>
                 </StackPanel>
-                
+
                 <StackPanel>
                     <Grid>
                         <Ellipse Width="120" Height="120" Fill="#FF367EC8" Stroke="Black" StrokeThickness="5" HorizontalAlignment="Center"/>
                         <Image Source="/Icons/hands.png" Width="100" Height="100" Margin="5"/>
                     </Grid>
 
-                    <TextBlock Text="Надежное взаимодействие" HorizontalAlignment="Center" Foreground="White" Margin="5" FontSize="14"/>
+                    <TextBlock Text="Надежное взаимодействие" TextWrapping="Wrap" HorizontalAlignment="Center" Foreground="White" Margin="5" FontSize="14"/>
                 </StackPanel>
-                
+
                 <StackPanel>
                     <Grid>
                         <Ellipse Width="120" Height="120" Fill="#FFD6EE23" Stroke="Black" StrokeThickness="5" HorizontalAlignment="Center"/>
@@ -84,13 +105,12 @@
 
                     <TextBlock Text="Точно в срок" HorizontalAlignment="Center" Foreground="White" Margin="5" FontSize="14"/>
                 </StackPanel>
-                
+
                 <StackPanel>
                     <Grid>
                         <Ellipse Width="120" Height="120" Fill="#FFF43535" Stroke="Black" StrokeThickness="5" HorizontalAlignment="Center"/>
                         <Image Source="/Icons/bag.png" Width="100" Height="100" Margin="5"/>
                     </Grid>
-
                     <TextBlock Text="Полный объем проектной документации" TextWrapping="Wrap" HorizontalAlignment="Center" Foreground="White" Margin="5" FontSize="14"/>
                 </StackPanel>
             </UniformGrid>

@@ -1,4 +1,5 @@
 ﻿using ProectTM9Api.Models;
+using ProectTM9App.Classes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,16 +25,19 @@ namespace ProectTM9App.Pages
     /// </summary>
     public partial class MainPage : Page
     {
+        private RequestTracker requestTracker = new RequestTracker();
         public MainPage()
         {
             InitializeComponent();
         }
+
 
         private async void GetConsultationBtn_Click(object sender, RoutedEventArgs e)
         {
             var name = textBoxName.Text;
             var email = textBoxEmail.Text;
             var phoneNumber = textBoxNumber.Text;
+            var question = textBoxQuestion.Text;
 
             // Валидация данных
             if (!IsValidName(name))
@@ -51,12 +55,24 @@ namespace ProectTM9App.Pages
                 MessageBox.Show("Номер телефона должен начинаться на '+'.");
                 return;
             }
+            if (!IsValidQuestion(question))
+            {
+                MessageBox.Show("Вопрос не может быть пустым (или введите корректный вопрос)");
+                return;
+            }
+
+            if (!requestTracker.CanSendRequest())
+            {
+                MessageBox.Show("Вы достигли лимита на отправку заявок. Пожалуйста, подождите.");
+                return;
+            }
 
             var request = new ConsultationRequest
             {
                 Name = name,
                 Email = email,
-                PhoneNumber = phoneNumber
+                PhoneNumber = phoneNumber,
+                Question = question
             };
 
             using (var httpClient = new HttpClient())
@@ -103,14 +119,19 @@ namespace ProectTM9App.Pages
 
         private bool IsValidPhoneNumber(string phoneNumber)
         {
-            // Проверяем, что номер начинается с "+" и длина номера больше 1
+            // Проверка, что номер начинается с "+" и длина номера больше 1
             if (phoneNumber.StartsWith('+') && phoneNumber.Length > 1)
             {
-                // Проверяем, что после "+" идут только цифры
+                // Проверка, что после "+" идут только цифры
                 return phoneNumber.Substring(1).All(char.IsDigit);
             }
 
             return false;
+        }
+
+        private bool IsValidQuestion(string question)
+        {
+            return !string.IsNullOrWhiteSpace(question) && question != "Напишите ваш вопрос или выберите из выпадающего списка";
         }
 
         private void countryComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -159,6 +180,13 @@ namespace ProectTM9App.Pages
             }
         }
 
+        private void readyComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (readyComboBox.SelectedItem is ComboBoxItem selectedItem)
+            {
+                textBoxQuestion.Text = selectedItem.Content.ToString();
+            }
+        }
     }   
     
 }

@@ -13,10 +13,19 @@ namespace ProectTM9Api.Controllers
         [HttpPost]
         public IActionResult SubmitRequest([FromBody] ConsultationRequest request)
         {
-            if (request == null || string.IsNullOrEmpty(request.Name) || string.IsNullOrEmpty(request.Email) || string.IsNullOrEmpty(request.PhoneNumber))
+            // Проверка на null и пустые строки
+            if (request == null ||
+                string.IsNullOrEmpty(request.Name) ||
+                string.IsNullOrEmpty(request.Email) ||
+                string.IsNullOrEmpty(request.PhoneNumber) ||
+                string.IsNullOrEmpty(request.Question))
             {
                 return BadRequest("Неверные данные запроса.");
             }
+
+            // Установка даты и времени создания заявки
+            request.CreatedAt = DateTime.UtcNow;
+            request.IsCompleted = false; // Новая заявка не выполнена
 
             // Сохранение данных в JSON файл
             SaveRequestToFile(request);
@@ -47,6 +56,49 @@ namespace ProectTM9Api.Controllers
             }
         }
 
+        [HttpPut("{id}")]
+        public IActionResult UpdateRequestStatus(int id)
+        {
+            var requests = LoadRequestsFromFile();
+            var request = requests.FirstOrDefault(r => r.Id == id);
+
+            if (request == null)
+            {
+                return NotFound("Заявка не найдена.");
+            }
+
+            request.IsCompleted = true; // Установка статуса "выполнено"
+
+            SaveRequestsToFile(requests); // Сохранение обновленного списка
+
+            return Ok("Статус заявки обновлен.");
+        }
+
+        [HttpDelete("{id}")]
+        public IActionResult DeleteRequest(int id)
+        {
+            var requests = LoadRequestsFromFile();
+            var requestToRemove = requests.FirstOrDefault(r => r.Id == id);
+
+            if (requestToRemove == null)
+            {
+                return NotFound("Заявка не найдена.");
+            }
+
+            requests.Remove(requestToRemove);
+
+            SaveRequestsToFile(requests); // Сохранение обновленного списка
+
+            return Ok("Заявка удалена.");
+        }
+
+        private void SaveRequestsToFile(List<ConsultationRequest> requests)
+        {
+            var json = JsonSerializer.Serialize(requests);
+            System.IO.File.WriteAllText(FilePath, json);
+        }
+
+
         private List<ConsultationRequest> LoadRequestsFromFile()
         {
             if (!System.IO.File.Exists(FilePath))
@@ -62,10 +114,10 @@ namespace ProectTM9Api.Controllers
             }
             catch (JsonException)
             {
-                // Если произошла ошибка десериализации, возвращаем пустой список
+                // Если произошла ошибка десериализации, возвращение пустого списка
                 return new List<ConsultationRequest>();
             }
-
         }
     }
+
 }

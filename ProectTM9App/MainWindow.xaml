@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProectTM9App"
         mc:Ignorable="d"
-        Title="MainWindow" MinHeight="600" MinWidth="1200">
+        Title="Проект ТМ-9" MinHeight="600" MinWidth="1200">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
@@ -36,12 +36,6 @@
                 <StackPanel Orientation="Horizontal">
                     <Image Source="/Icons/team.png" Width="20" Height="20" Margin="0,0,5,0"/>
                     <TextBlock Text="Команда"/>
-                </StackPanel>
-            </Button>
-            <Button Style="{StaticResource NavButtonStyle}" Click="FeedbackBtn_Click">
-                <StackPanel Orientation="Horizontal">
-                    <Image Source="/Icons/otzivi.png" Width="20" Height="20" Margin="0,0,5,0"/>
-                    <TextBlock Text="Отзывы"/>
                 </StackPanel>
             </Button>
             <Button Style="{StaticResource NavButtonStyle}" Click="ContactBtn_Click">

@@ -62,9 +62,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Page Update="Pages\FeedbackPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Update="Pages\MainPage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
