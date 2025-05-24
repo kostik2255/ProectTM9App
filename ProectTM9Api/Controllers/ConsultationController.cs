@@ -9,6 +9,10 @@ namespace ProectTM9Api.Controllers
     public class ConsultationController : ControllerBase
     {
         private const string FilePath = "consultations.json";
+        private int GetNextId(List<ConsultationRequest> requests)
+        {
+            return requests.Count > 0 ? requests.Max(r => r.Id) + 1 : 1;
+        }
 
         [HttpPost]
         public IActionResult SubmitRequest([FromBody] ConsultationRequest request)
@@ -23,6 +27,10 @@ namespace ProectTM9Api.Controllers
                 return BadRequest("Неверные данные запроса.");
             }
 
+            // Установка уникального идентификатора
+            var requests = LoadRequestsFromFile();
+            request.Id = GetNextId(requests);
+
             // Установка даты и времени создания заявки
             request.CreatedAt = DateTime.UtcNow;
             request.IsCompleted = false; // Новая заявка не выполнена
@@ -34,11 +42,18 @@ namespace ProectTM9Api.Controllers
         }
 
         [HttpGet]
-        public IActionResult GetRequests()
+        public IActionResult GetRequests(bool? completed = null)
         {
             var requests = LoadRequestsFromFile();
+
+            if (completed.HasValue)
+            {
+                requests = requests.Where(r => r.IsCompleted == completed.Value).ToList();
+            }
+
             return Ok(requests);
         }
+
 
         private void SaveRequestToFile(ConsultationRequest request)
         {
@@ -56,8 +71,14 @@ namespace ProectTM9Api.Controllers
             }
         }
 
+
+        public class UpdateStatusRequest
+        {
+            public bool IsCompleted { get; set; }
+        }
+
         [HttpPut("{id}")]
-        public IActionResult UpdateRequestStatus(int id)
+        public IActionResult UpdateRequestStatus(int id, [FromBody] UpdateStatusRequest updateStatusRequest)
         {
             var requests = LoadRequestsFromFile();
             var request = requests.FirstOrDefault(r => r.Id == id);
@@ -67,7 +88,7 @@ namespace ProectTM9Api.Controllers
                 return NotFound("Заявка не найдена.");
             }
 
-            request.IsCompleted = true; // Установка статуса "выполнено"
+            request.IsCompleted = updateStatusRequest.IsCompleted; // Установка статуса
 
             SaveRequestsToFile(requests); // Сохранение обновленного списка
 
@@ -94,8 +115,20 @@ namespace ProectTM9Api.Controllers
 
         private void SaveRequestsToFile(List<ConsultationRequest> requests)
         {
-            var json = JsonSerializer.Serialize(requests);
-            System.IO.File.WriteAllText(FilePath, json);
+            try
+            {
+                var options = new JsonSerializerOptions
+                {
+                    WriteIndented = true // Отступы для читаемости
+                };
+                var json = JsonSerializer.Serialize(requests, options);
+                System.IO.File.WriteAllText(FilePath, json);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Ошибка сохранения запросов в файл: {ex.Message}");
+                throw;
+            }
         }
 
 
