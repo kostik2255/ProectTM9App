@@ -109,7 +109,7 @@ namespace ProectTM9App.Pages
 
         private bool IsValidName(string name)
         {
-            return !string.IsNullOrWhiteSpace(name) && name != "Ваше имя";
+            return !string.IsNullOrWhiteSpace(name) && name != "Ваше имя*";
         }
 
         private bool IsValidEmail(string email)

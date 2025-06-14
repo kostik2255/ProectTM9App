@@ -71,7 +71,6 @@ namespace ProectTM9Api.Controllers
             }
         }
 
-
         public class UpdateStatusRequest
         {
             public bool IsCompleted { get; set; }
