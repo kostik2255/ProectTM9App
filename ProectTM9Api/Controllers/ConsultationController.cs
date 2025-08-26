@@ -54,7 +54,6 @@ namespace ProectTM9Api.Controllers
             return Ok(requests);
         }
 
-
         private void SaveRequestToFile(ConsultationRequest request)
         {
             try

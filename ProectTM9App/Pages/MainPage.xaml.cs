@@ -82,7 +82,7 @@ namespace ProectTM9App.Pages
 
                 try
                 {
-                    var response = await httpClient.PostAsync("https://localhost:7157/api/Consultation", content);
+                    var response = await httpClient.PostAsync("http://192.168.1.5/api/Consultation", content);
                     if (response.IsSuccessStatusCode)
                     {
                         MessageBox.Show("Запрос успешно отправлен.");
